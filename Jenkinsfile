@@ -20,7 +20,15 @@ pipeline {
                 echo "====++++  Build and Unit Test (Maven/JUnit) ++++===="
                 sh "mvn -f greetings-app/pom.xml clean package"
             }           
-        }  
+        } 
+        // Static Code Analysis (SonarQube)
+        stage("Static Code Analysis (SonarQube)"){
+            steps{
+                echo "====++++  Static Code Analysis (SonarQube) ++++===="                
+                sh "mvn -f greetings-app/pom.xml clean package -Dsurefire.skip=true sonar:sonar -Dsonar.host.url=http://172.17.0.1:9000   -Dsonar.projectName=challenge-09-ci-cd-jenkins-ansible -Dsonar.projectVersion=$BUILD_NUMBER";
+             
+            }           
+        } 
 
     }
 }
