@@ -35,7 +35,7 @@ pipeline {
                 
                 echo "====++++  Deploy WAR on staging using Ansible ++++===="
       
-                ansiblePlaybook(credentialsId: 'ssh-on-server-stagging', 
+                ansiblePlaybook(credentialsId: 'ssh-ke-for-server-stagging', 
                                   inventory:  "config-as-code/ansible/hosts", 
                                   playbook: 'config-as-code/ansible/playbook-deploy-staging.yaml')          
             } 
