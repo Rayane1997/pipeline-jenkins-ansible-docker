@@ -29,6 +29,17 @@ pipeline {
              
             }           
         } 
+ // Deploiement du WAR sur le server-staging avec Ansible
+        stage("Deploy WAR on staging using Ansible"){
+            steps{
+                
+                echo "====++++  Deploy WAR on staging using Ansible ++++===="
+      
+                ansiblePlaybook(credentialsId: 'ssh-on-server-stagging', 
+                                  inventory:  "config-as-code/ansible/hosts", 
+                                  playbook: 'config-as-code/ansible/playbook-deploy-staging.yaml')          
+            } 
+        }
 
     }
 }
