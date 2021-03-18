@@ -18,7 +18,7 @@ pipeline {
         stage("Build and Package"){
             steps{
                 echo "====++++  Build and Unit Test (Maven/JUnit) ++++===="
-                sh "mvn clean package"
+                sh "mvn -f greetings-app/ clean package"
             }           
         }  
 
